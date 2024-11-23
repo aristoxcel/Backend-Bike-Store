@@ -19,7 +19,11 @@ const productSchema = new Schema<IProduct>({
     category: { 
         type: String, 
         required: true,
-        enum: ["Mountain", "Road", "Hybrid", "Electric"], // Restrict to exact values
+        enum: {
+            values:["Mountain", "Road", "Hybrid", "Electric"],
+            message:"{VALUE} is not valid"
+        }, // Restrict to exact values
+        default:"Mountain"
     },
     description: {
         type: String,
