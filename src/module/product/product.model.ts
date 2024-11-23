@@ -1,9 +1,10 @@
 import {model, Schema } from "mongoose";
+import { IProduct } from "./product.interface";
 
-const productSchema = new Schema({
+const productSchema = new Schema<IProduct>({
     name: {
         type: String,
-        required: true, // Name is mandatory
+        required: [true, 'Please enter a valid name'], // Name is mandatory
         trim: true, // Removes extra spaces
     },
     brand: {
@@ -15,10 +16,10 @@ const productSchema = new Schema({
         required: true, // Price is mandatory
         min: 0, // Ensure price is not negative
     },
-    category: {
-        type: String,
-        required: true, // Category is mandatory
-        trim: true, // Removes extra spaces
+    category: { 
+        type: String, 
+        required: true,
+        enum: ["Mountain", "Road", "Hybrid", "Electric"], // Restrict to exact values
     },
     description: {
         type: String,
@@ -35,10 +36,11 @@ const productSchema = new Schema({
         required: true, // InStock is mandatory
         default: true, // Default value is `true`
     },
-}, {
+},
+{
     timestamps: true, // Automatically adds createdAt and updatedAt fields
 });
 
-const Product = model("Product", productSchema);
+const ProductModel = model<IProduct>("product", productSchema);
 
-export default Product;
+export default ProductModel;
