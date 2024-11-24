@@ -17,18 +17,18 @@ const orderSchema = new Schema<IOrder>(
     },
     product: {
       type: Schema.Types.ObjectId,
-      ref: 'product', // Refers to the Product model
+      ref: 'product',
       required: true,
     },
     quantity: {
       type: Number,
       required: true,
-      min: 1, // Minimum quantity is 1
+      min: 1,
     },
     totalPrice: {
       type: Number,
       required: true,
-      min: 0, // Ensure total price is not negative
+      min: 0, 
     },
   },
   {

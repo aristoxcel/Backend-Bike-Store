@@ -2,6 +2,7 @@ import OrderModel from './order.model'
 import ProductModel from '../product/product.model'
 import { IOrder } from './order.interface'
 
+  // Make a function for create a order
 const createOrder = async (orderData: IOrder): Promise<IOrder> => {
   const { email, product, quantity } = orderData
 
@@ -32,18 +33,21 @@ const createOrder = async (orderData: IOrder): Promise<IOrder> => {
 
   // Update product inventory
   productDoc.quantity -= quantity
-  productDoc.inStock = productDoc.quantity > 0 // Update inStock status
+  productDoc.inStock = productDoc.quantity > 0 
   await productDoc.save()
 
   return order
 }
 
+
+
+  // Calculate the total revenue
 const calculateRevenue = async (): Promise<number> => {
   const revenueResult = await OrderModel.aggregate([
     {
       $group: {
-        _id: null, // Group all documents
-        totalRevenue: { $sum: '$totalPrice' }, // Sum up the totalPrice from all orders
+        _id: null, 
+        totalRevenue: { $sum: '$totalPrice' },
       },
     },
   ])

@@ -1,10 +1,9 @@
 import { Request, Response, RequestHandler } from 'express'
 import { orderService } from './order.service'
 
-export const createOrder: RequestHandler = async (
-  req: Request,
-  res: Response
-) => {
+
+
+export const createOrder: RequestHandler = async (req: Request, res: Response) => {
   try {
     const query = req.body
     const result = await orderService.createOrder(query)
@@ -20,6 +19,8 @@ export const createOrder: RequestHandler = async (
     })
   }
 }
+
+
 
 export const revenue: RequestHandler = async (req: Request, res: Response) => {
   try {
