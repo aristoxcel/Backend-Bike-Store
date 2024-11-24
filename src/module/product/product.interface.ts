@@ -1,9 +1,9 @@
 export interface IProduct {
-    name:string,
-    brand:string,
-    price:number,
-    category: "Mountain" | "Road" | "Hybrid" | "Electric";
-    description?:string | null,
-    quantity:number,
-    inStock: true | false,
+  name: string
+  brand: string
+  price: number
+  category: 'Mountain' | 'Road' | 'Hybrid' | 'Electric'
+  description?: string | null
+  quantity: number
+  inStock: true | false
 }
