@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express'
-// import cors from 'cors';
+
 import productRouter from './module/product/product.router'
 import orderRouter from './module/order/order.router'
 const app = express()
-// app.use(cors());
+
 // middleweare
 app.use(express.json())
 
